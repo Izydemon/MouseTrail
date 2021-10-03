@@ -215,13 +215,13 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_sliderSizeStateChanged
 
     private void comboBoxBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxBackgroundActionPerformed
-        String opcion = (String) comboBoxBackground.getSelectedItem();
-        trailPanel.setBackground(opcion);
+        int selected = comboBoxBackground.getSelectedIndex();
+        trailPanel.setBackground(selected);
     }//GEN-LAST:event_comboBoxBackgroundActionPerformed
 
     private void comboBoxForegroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxForegroundActionPerformed
-        String opcion = (String) comboBoxForeground.getSelectedItem();
-        trailPanel.setForeground(opcion);
+        int selected = comboBoxForeground.getSelectedIndex();
+        trailPanel.setForeground(selected);
     }//GEN-LAST:event_comboBoxForegroundActionPerformed
 
     /**
