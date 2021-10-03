@@ -12,13 +12,13 @@ public class TrailPanel extends JPanel {
     
     boolean draw = false;
     
-    int drawX = -10;
-    int drawY = -10;
-    
     int drawSize = 20;
     
     int distanceBetweenTrail = 10;
     private int timer = 0;
+    
+    private final Color[] backgroundColors;
+    private final Color[] foregroundColors;
     
     private class Point{
         int x;
@@ -43,6 +43,18 @@ public class TrailPanel extends JPanel {
     
     public TrailPanel(){
         super();
+        
+        backgroundColors = new Color[3];
+        backgroundColors[0] = Color.WHITE;
+        backgroundColors[1] = Color.BLACK;
+        backgroundColors[2] = Color.GRAY;
+        
+        foregroundColors = new Color[5];
+        foregroundColors[0] = Color.BLACK;
+        foregroundColors[1] = Color.RED;
+        foregroundColors[2] = Color.BLUE;
+        foregroundColors[3] = Color.GREEN;
+        foregroundColors[4] = Color.YELLOW;
     }
     
     @Override
@@ -58,9 +70,10 @@ public class TrailPanel extends JPanel {
     
     public void DrawCircle(int x, int y){
         if(timer == 0){
-            draw = true;
             trail[trailIndex].SetPoint(x, y);
             trailIndex = (trailIndex + 1) % 5;
+            if(trailIndex == 0)
+                draw = true;
             timer = distanceBetweenTrail;
             this.repaint();
         } else{
@@ -76,35 +89,11 @@ public class TrailPanel extends JPanel {
         drawSize = value;
     }
     
-    public void setBackground(String opcion){
-        if(opcion.equals("Blanco")){
-            this.setBackground(Color.WHITE);
-        } else {
-            if(opcion.equals("Negro")){
-                this.setBackground(Color.BLACK);
-            } else {
-                this.setBackground(Color.GRAY);
-            }   
-        }
+    public void setBackground(int opcion){
+        this.setBackground(backgroundColors[opcion]);
     }
     
-    public void setForeground(String opcion){
-        if(opcion.equals("Negro")){
-            this.setForeground(Color.BLACK);
-        } else {
-            if(opcion.equals("Rojo")){
-                this.setForeground(Color.RED);
-            } else {
-                if(opcion.equals("Azul")){
-                    this.setForeground(Color.BLUE);
-                } else {
-                    if(opcion.equals("Verde")){
-                        this.setForeground(Color.GREEN);
-                    } else {
-                        this.setForeground(Color.YELLOW);
-                    } 
-                }
-            } 
-        }
+    public void setForeground(int opcion){
+        this.setForeground(foregroundColors[opcion]);
     }
 }
