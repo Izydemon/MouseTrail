@@ -49,9 +49,6 @@ public class TrailPanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         
-        this.setBackground(Color.WHITE);
-        this.setForeground(Color.BLACK);
-        
         if(draw){
             for (Point point : trail) {
                 g.fillOval(point.GetPointX() - (drawSize / 2), point.GetPointY() - (drawSize / 2), drawSize, drawSize);
@@ -77,5 +74,37 @@ public class TrailPanel extends JPanel {
     
     public void SetSize(int value){
         drawSize = value;
+    }
+    
+    public void setBackground(String opcion){
+        if(opcion.equals("Blanco")){
+            this.setBackground(Color.WHITE);
+        } else {
+            if(opcion.equals("Negro")){
+                this.setBackground(Color.BLACK);
+            } else {
+                this.setBackground(Color.GRAY);
+            }   
+        }
+    }
+    
+    public void setForeground(String opcion){
+        if(opcion.equals("Negro")){
+            this.setForeground(Color.BLACK);
+        } else {
+            if(opcion.equals("Rojo")){
+                this.setForeground(Color.RED);
+            } else {
+                if(opcion.equals("Azul")){
+                    this.setForeground(Color.BLUE);
+                } else {
+                    if(opcion.equals("Verde")){
+                        this.setForeground(Color.GREEN);
+                    } else {
+                        this.setForeground(Color.YELLOW);
+                    } 
+                }
+            } 
+        }
     }
 }

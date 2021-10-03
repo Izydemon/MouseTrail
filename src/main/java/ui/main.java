@@ -5,6 +5,9 @@
  */
 package ui;
 
+import java.awt.Color;
+import static java.awt.Transparency.OPAQUE;
+
 /**
  *
  * @author izyde
@@ -63,11 +66,21 @@ public class main extends javax.swing.JFrame {
 
         BackgroundLabel.setText("Background:");
 
-        comboBoxBackground.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxBackground.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blanco", "Negro", "Gris" }));
+        comboBoxBackground.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxBackgroundActionPerformed(evt);
+            }
+        });
 
         ForegroundLabel.setText("Foreground:");
 
-        comboBoxForeground.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxForeground.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Negro", "Rojo", "Azul", "Verde", "Amarillo" }));
+        comboBoxForeground.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxForegroundActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout colorPanelLayout = new javax.swing.GroupLayout(colorPanel);
         colorPanel.setLayout(colorPanelLayout);
@@ -117,7 +130,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(optionPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sliderDistance, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE)
+                    .addComponent(sliderDistance, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
                     .addGroup(optionPanelLayout.createSequentialGroup()
                         .addGroup(optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(FormLabel)
@@ -150,6 +163,9 @@ public class main extends javax.swing.JFrame {
                 trailPanelMouseMoved(evt);
             }
         });
+
+        trailPanel.setBackground(Color.WHITE);
+        trailPanel.setForeground(Color.BLACK);
 
         javax.swing.GroupLayout trailPanelLayout = new javax.swing.GroupLayout(trailPanel);
         trailPanel.setLayout(trailPanelLayout);
@@ -197,6 +213,16 @@ public class main extends javax.swing.JFrame {
     private void sliderSizeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderSizeStateChanged
         trailPanel.SetSize(sliderSize.getValue());
     }//GEN-LAST:event_sliderSizeStateChanged
+
+    private void comboBoxBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxBackgroundActionPerformed
+        String opcion = (String) comboBoxBackground.getSelectedItem();
+        trailPanel.setBackground(opcion);
+    }//GEN-LAST:event_comboBoxBackgroundActionPerformed
+
+    private void comboBoxForegroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxForegroundActionPerformed
+        String opcion = (String) comboBoxForeground.getSelectedItem();
+        trailPanel.setForeground(opcion);
+    }//GEN-LAST:event_comboBoxForegroundActionPerformed
 
     /**
      * @param args the command line arguments
