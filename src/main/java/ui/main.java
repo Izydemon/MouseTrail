@@ -32,13 +32,13 @@ public class main extends javax.swing.JFrame {
 
         optionPanel = new javax.swing.JPanel();
         sliderDistance = new javax.swing.JSlider();
-        FormLabel = new javax.swing.JLabel();
-        comboBoxForm = new javax.swing.JComboBox<>();
         colorPanel = new javax.swing.JPanel();
         BackgroundLabel = new javax.swing.JLabel();
         comboBoxBackground = new javax.swing.JComboBox<>();
         ForegroundLabel = new javax.swing.JLabel();
         comboBoxForeground = new javax.swing.JComboBox<>();
+        FormLabel = new javax.swing.JLabel();
+        comboBoxForm = new javax.swing.JComboBox<>();
         sliderSize = new javax.swing.JSlider();
         trailPanel = new ui.TrailPanel();
 
@@ -57,10 +57,6 @@ public class main extends javax.swing.JFrame {
                 sliderDistanceStateChanged(evt);
             }
         });
-
-        FormLabel.setText("Forma:");
-
-        comboBoxForm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         colorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Color"));
 
@@ -82,6 +78,15 @@ public class main extends javax.swing.JFrame {
             }
         });
 
+        FormLabel.setText("Forma:");
+
+        comboBoxForm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Circle", "Square", "Triangle" }));
+        comboBoxForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxFormActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout colorPanelLayout = new javax.swing.GroupLayout(colorPanel);
         colorPanel.setLayout(colorPanelLayout);
         colorPanelLayout.setHorizontalGroup(
@@ -91,9 +96,11 @@ public class main extends javax.swing.JFrame {
                 .addGroup(colorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BackgroundLabel)
                     .addComponent(ForegroundLabel)
+                    .addComponent(FormLabel)
                     .addGroup(colorPanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(colorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboBoxForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboBoxForeground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboBoxBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -101,14 +108,19 @@ public class main extends javax.swing.JFrame {
         colorPanelLayout.setVerticalGroup(
             colorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(colorPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(FormLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBoxForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BackgroundLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboBoxBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ForegroundLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboBoxForeground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         sliderSize.setMajorTickSpacing(10);
@@ -130,14 +142,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(optionPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sliderDistance, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
-                    .addGroup(optionPanelLayout.createSequentialGroup()
-                        .addGroup(optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FormLabel)
-                            .addGroup(optionPanelLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(comboBoxForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(sliderDistance, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
                     .addComponent(sliderSize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(colorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,13 +152,10 @@ public class main extends javax.swing.JFrame {
             optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(optionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(FormLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboBoxForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(sliderSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sliderDistance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(sliderSize, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(sliderDistance, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(colorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -175,7 +177,7 @@ public class main extends javax.swing.JFrame {
         );
         trailPanelLayout.setVerticalGroup(
             trailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
+            .addGap(0, 390, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,7 +205,7 @@ public class main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void trailPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trailPanelMouseMoved
-        trailPanel.DrawCircle(evt.getX(), evt.getY());
+        trailPanel.Draw(evt.getX(), evt.getY());
     }//GEN-LAST:event_trailPanelMouseMoved
 
     private void sliderDistanceStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderDistanceStateChanged
@@ -223,6 +225,11 @@ public class main extends javax.swing.JFrame {
         int selected = comboBoxForeground.getSelectedIndex();
         trailPanel.setForeground(selected);
     }//GEN-LAST:event_comboBoxForegroundActionPerformed
+
+    private void comboBoxFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFormActionPerformed
+        int selected = comboBoxForm.getSelectedIndex();
+        trailPanel.setFigure(selected);
+    }//GEN-LAST:event_comboBoxFormActionPerformed
 
     /**
      * @param args the command line arguments

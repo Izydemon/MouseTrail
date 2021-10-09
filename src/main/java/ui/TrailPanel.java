@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Polygon;
 import javax.swing.JPanel;
 
 /**
@@ -19,6 +20,14 @@ public class TrailPanel extends JPanel {
     
     private final Color[] backgroundColors;
     private final Color[] foregroundColors;
+    
+    private enum Figure{
+        Circle,
+        Rect,
+        Trian
+    }
+    
+    private Figure figure = Figure.Circle;
     
     private class Point{
         int x;
@@ -63,12 +72,30 @@ public class TrailPanel extends JPanel {
         
         if(draw){
             for (Point point : trail) {
-                g.fillOval(point.GetPointX() - (drawSize / 2), point.GetPointY() - (drawSize / 2), drawSize, drawSize);
+                switch(figure){
+                    case Circle:
+                        g.fillOval(point.GetPointX() - (drawSize / 2), point.GetPointY() - (drawSize / 2), drawSize, drawSize);
+                        break;
+                    case Rect:
+                        g.fillRect(point.GetPointX() - (drawSize / 2), point.GetPointY() - (drawSize / 2), drawSize, drawSize);
+                        break;
+                    case Trian:
+                        g.fillPolygon(GetTriangle(point.GetPointX(), point.GetPointY()));
+                        break;
+                }
             }
         }
     }
     
-    public void DrawCircle(int x, int y){
+    private Polygon GetTriangle(int x, int y){        
+        Polygon triangle = new Polygon(new int[] {x - (drawSize / 2), x + (drawSize / 2), x},
+                new int[] {y + (drawSize / 2), y + (drawSize / 2), y - (drawSize / 2)},
+                3);
+        
+        return triangle;
+    }
+    
+    public void Draw(int x, int y){
         if(timer == 0){
             trail[trailIndex].SetPoint(x, y);
             trailIndex = (trailIndex + 1) % 5;
@@ -95,5 +122,19 @@ public class TrailPanel extends JPanel {
     
     public void setForeground(int opcion){
         this.setForeground(foregroundColors[opcion]);
+    }
+    
+    public void setFigure(int opcion){
+        switch(opcion){
+            case 0:
+                figure = Figure.Circle;
+                break;
+            case 1:
+                figure = Figure.Rect;
+                break;
+            case 2:
+                figure = Figure.Trian;
+                break;
+        }
     }
 }
